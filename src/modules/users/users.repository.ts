@@ -15,7 +15,12 @@ import { User } from './users.entity.js';
 @Injectable()
 class UserRepository{
     constructor(
+//@InjectRepository(User) signalisiert NestJS: "Ich benötige das Repository, das für die Entity User
+// zuständig ist. Bitte stelle mir eine enrsprechende Instanz zur Verfügung."
         @InjectRepository(User)
+//Repository ist eine generische Klasse von TypeORM. Der Ausdruck <User> gibt an, für welche Entity
+//dieses Repository zuständig ist: Damit weiß TypeScript, welche Datenstruktur das jeweilige Repository
+//verwaltet:
         private readonly repository: Repository<User>,
     ) {}
     //alle Users speichern
